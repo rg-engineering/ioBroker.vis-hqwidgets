@@ -14,6 +14,13 @@ For one widget the jQuery.knob plugin (MIT) from Anthony Terrien is used.
 http://anthonyterrien.com/knob/ or https://github.com/aterrien/jQuery-Knob 
 
 ## Changelog
+### 1.0.9 (2017-07-05)
+* (Rene) some optimizations:
+* disable descriptionLeft with one blank ' '
+* add garage door
+
+
+
 ### 1.0.8 (2016-11-24)
 * (bluefox) Reduce render interval
 
@@ -101,6 +108,12 @@ http://anthonyterrien.com/knob/ or https://github.com/aterrien/jQuery-Knob
 
 ### 0.1.0 (2015-07-09)
 - (bluefox) initial checkin
+
+## to do's
+
+* left description is always added when something changed and description is empty -> need always to remove description string
+* certain icons for doors (garage) are missing
+
 
 ## License
  Copyright (c) 2013-2016 bluefox https://github.com/GermanBluefox

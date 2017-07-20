@@ -1234,7 +1234,7 @@ vis.binds.hqwidgets = {
             // place left-info, right-info, caption and image
             if (!$div.find('.vis-hq-main').length) {
                 var text = '';
-                if (data.descriptionLeft) {
+                if (data.descriptionLeft && data.descriptionLeft!=" ") {
                     if (data.infoLeftPaddingLeft  === undefined || data.infoLeftPaddingLeft  === null) data.infoLeftPaddingLeft = '15px';
                     if (data.infoLeftPaddingRight === undefined || data.infoLeftPaddingRight === null) data.infoLeftPaddingRight = '50px';
                     if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/))  data.infoLeftPaddingLeft  = data.infoLeftPaddingLeft  + 'px';
@@ -1940,7 +1940,7 @@ vis.binds.hqwidgets = {
             }
 
             var text = '<table class="hq-blind vis-hq-no-space" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"><tr>';
-            if (data.descriptionLeft) {
+            if (data.descriptionLeft && data.descriptionLeft != " ") {
                 if (data.infoLeftPaddingLeft  === undefined || data.infoLeftPaddingLeft  === null) data.infoLeftPaddingLeft = '15px';
                 if (data.infoLeftPaddingRight === undefined || data.infoLeftPaddingRight === null) data.infoLeftPaddingRight = '50px';
                 if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/))  data.infoLeftPaddingLeft  = data.infoLeftPaddingLeft  + 'px';
@@ -2175,8 +2175,22 @@ vis.binds.hqwidgets = {
             }
 
             if (!notUpdateDoor) {
+
+                //wenn Icon, dann Icon anzeigen; sonst wie bisher..
+                    
                 if (value) {
-                    if (data.noAnimate || isFirst) {
+                    if (data.IconNameOpened) {
+
+                        //to do xxx
+                        var width = $div.width();
+                        var height = $div.height();
+                        var img = null;
+                        img = data.IconNameOpened;
+                        $div.find('.vis-hq-icon').html('<img class="vis-hq-icon-img" style="height: ' + height + 'px; width: auto;" src="' + img + '"/>')
+
+                        console.log("door.changestate: " + data.IconNameOpened);
+
+                    } else if (data.noAnimate || isFirst) {
                         $div.find('.vis-hq-door-sheet').css({width: '80%'});
                         $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).css({width: '20%'});
                         $div.find('.vis-hq-door-handle').css({left: (data.door_type !== 'right') ? '60%': '30%'});
@@ -2186,7 +2200,17 @@ vis.binds.hqwidgets = {
                         $div.find('.vis-hq-door-handle').animate({left: (data.door_type !== 'right') ? '60%': '30%'}, 500);
                     }
                 } else {
-                    if (data.noAnimate || isFirst) {
+                    if(data.IconNameClosed) {
+                        //to do xxx
+                        var width = $div.width();
+                        var height = $div.height();
+                        var img = null;
+                        img = data.IconNameClosed;
+                        $div.find('.vis-hq-icon').html('<img class="vis-hq-icon-img" style="height: ' + height + 'px; width: auto;" src="' + img + '"/>')
+
+                        console.log("door.changestate: " + data.IconNameClosed);
+
+                    } else if (data.noAnimate || isFirst) {
                         $div.find('.vis-hq-door-sheet').css({width: '100%'});
                         $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).css({width: 0});
                         $div.find('.vis-hq-door-handle').css({left: (data.door_type !== 'right') ? '85%': '15%'});
@@ -2205,7 +2229,7 @@ vis.binds.hqwidgets = {
             // place left-info, right-info, caption and image
             if (!$div.find('.vis-hq-main').length) {
                 var text = '';
-                if (data.descriptionLeft) {
+                if (data.descriptionLeft && data.descriptionLeft != " ") {
                     if (data.infoLeftPaddingLeft  === undefined || data.infoLeftPaddingLeft  === null) data.infoLeftPaddingLeft = '15px';
                     if (data.infoLeftPaddingRight === undefined || data.infoLeftPaddingRight === null) data.infoLeftPaddingRight = '50px';
                     if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/))  data.infoLeftPaddingLeft  = data.infoLeftPaddingLeft  + 'px';

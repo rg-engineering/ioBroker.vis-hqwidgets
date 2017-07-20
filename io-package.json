@@ -1,49 +1,54 @@
 {
     "common": {
         "name":                     "vis-hqwidgets",
-        "version": "1.0.8",
-		"news": {
-			"1.0.8": {
-				"en": "Reduce render interval",
-				"de": "Verkleinere Renderwartezeit",
-				"ru": "Уменьшено время рендеринга"
-			},
-			"1.0.7": {
-				"en": "Allow set of padding for description",
-				"de": "Erlaube das Setzen von Abständen für Beschreibung",
-				"ru": "Можно выставлять отступы для описания"
-			},
-			"1.0.6": {
-				"en": "Fix circle Knob if negative limits\nfix first switch by checkbox",
-				"de": "Korregiere Circle-Knob bei negativen Werten\nKorrigiere ertse Schlatung bei Checkbox",
-				"ru": "Исправлена ошибка в Circle-Knob при отрицательных границах\nИсправлена ошибка в Checkbox при первом переключении"
-			},
-			"1.0.5": {
-				"en": "show last action fixed",
-				"de": "Korregiere letze Änderungszeit",
-				"ru": "Исправлена ошибка в инфо о последнем изменении"
-			},
-			"1.0.4": {
-				"en": "fix problem in inner temperature if knob widget set installed",
-				"de": "Korregiere das Problem in inner temp, falls Knob ist auch installiert",
-				"ru": "Исправлена совместная работа inner temp виджета и knob виджетов"
-			},
-			"1.0.3": {
-				"en": "fix initial value of shutter if inverted",
-				"de": "fix initial value of shutter if inverted",
-				"ru": "fix initial value of shutter if inverted"
-			},
-			"1.0.2": {
-				"en": "change [last changed] to ms",
-				"de": "change [last changed] to ms",
-				"ru": "change [last changed] to ms"
-			},
-			"1.0.1": {
-				"en": "add odometer widget",
-				"de": "add odometer widget",
-				"ru": "add odometer widget"
-			}
+        "version": "1.0.9",
+      "news": {
+        "1.0.9": {
+          "en": "some optimizations",
+          "de": "kleine Optimierungen",
+          "ru": "???"
         },
+        "1.0.8": {
+          "en": "Reduce render interval",
+          "de": "Verkleinere Renderwartezeit",
+          "ru": "Уменьшено время рендеринга"
+        },
+        "1.0.7": {
+          "en": "Allow set of padding for description",
+          "de": "Erlaube das Setzen von Abständen für Beschreibung",
+          "ru": "Можно выставлять отступы для описания"
+        },
+        "1.0.6": {
+          "en": "Fix circle Knob if negative limits\nfix first switch by checkbox",
+          "de": "Korregiere Circle-Knob bei negativen Werten\nKorrigiere ertse Schlatung bei Checkbox",
+          "ru": "Исправлена ошибка в Circle-Knob при отрицательных границах\nИсправлена ошибка в Checkbox при первом переключении"
+        },
+        "1.0.5": {
+          "en": "show last action fixed",
+          "de": "Korregiere letze Änderungszeit",
+          "ru": "Исправлена ошибка в инфо о последнем изменении"
+        },
+        "1.0.4": {
+          "en": "fix problem in inner temperature if knob widget set installed",
+          "de": "Korregiere das Problem in inner temp, falls Knob ist auch installiert",
+          "ru": "Исправлена совместная работа inner temp виджета и knob виджетов"
+        },
+        "1.0.3": {
+          "en": "fix initial value of shutter if inverted",
+          "de": "fix initial value of shutter if inverted",
+          "ru": "fix initial value of shutter if inverted"
+        },
+        "1.0.2": {
+          "en": "change [last changed] to ms",
+          "de": "change [last changed] to ms",
+          "ru": "change [last changed] to ms"
+        },
+        "1.0.1": {
+          "en": "add odometer widget",
+          "de": "add odometer widget",
+          "ru": "add odometer widget"
+        }
+      },
         "title":                    "ioBroker Visualisation - hqwidgets style Widgets",
         "desc": {
             "en":                   "High quality Widgets for ioBroker.vis",
