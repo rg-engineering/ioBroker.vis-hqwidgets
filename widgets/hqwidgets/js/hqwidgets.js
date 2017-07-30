@@ -1,7 +1,7 @@
 /*
     ioBroker.vis high quality Widget-Set
 
-    version: "1.0.6"
+    version: "1.0.9"
 
     Copyright 6'2014-2016 bluefox<dogafox@gmail.com>
 
@@ -862,7 +862,7 @@ $.extend(true, systemDictionary, {
 // </div>
 
 vis.binds.hqwidgets = {
-    version: "1.0.7",
+    version: "1.0.9",
     contextEnabled: true,
     zindex: [],
     preventDefault: function (e) {
@@ -1234,14 +1234,18 @@ vis.binds.hqwidgets = {
             // place left-info, right-info, caption and image
             if (!$div.find('.vis-hq-main').length) {
                 var text = '';
-                if (data.descriptionLeft && data.descriptionLeft!=" ") {
-                    if (data.infoLeftPaddingLeft  === undefined || data.infoLeftPaddingLeft  === null) data.infoLeftPaddingLeft = '15px';
+                if (data.descriptionLeft && data.descriptionLeft != " ") {
+                    console.log("111 we have descriptionleft:  " + data.descriptionLeft);
+                    if (data.infoLeftPaddingLeft === undefined || data.infoLeftPaddingLeft === null) data.infoLeftPaddingLeft = '15px';
                     if (data.infoLeftPaddingRight === undefined || data.infoLeftPaddingRight === null) data.infoLeftPaddingRight = '50px';
-                    if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/))  data.infoLeftPaddingLeft  = data.infoLeftPaddingLeft  + 'px';
+                    if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/)) data.infoLeftPaddingLeft = data.infoLeftPaddingLeft + 'px';
                     if (!data.infoLeftPaddingRight.match(/px$|rem$|em$/)) data.infoLeftPaddingRight = data.infoLeftPaddingRight + 'px';
 
                     text += '<div class="vis-hq-leftinfo" style="padding-left: ' + data.infoLeftPaddingLeft + '; padding-right: ' + data.infoLeftPaddingRight + '; font-size: ' + (data.infoLeftFontSize || 12) + 'px' + (data.infoColor ? ';color: ' + data.infoColor : '') + (data.infoBackground ? ';background: ' + data.infoBackground : '') + '"><span class="vis-hq-leftinfo-text">' +
                         (data.descriptionLeft || '').replace(/\s/g, '&nbsp;').replace(/\\n/g, '<br>') + '</span></div>\n';
+                }
+                else {
+                    console.log("111 we dont have descriptionleft");
                 }
                 if (data.infoRight || data.wType === 'number' || data.hoursLastAction) {
                     if (data.infoRightPaddingLeft  === undefined || data.infoRightPaddingLeft  === null) data.infoRightPaddingLeft = 0;
@@ -1941,13 +1945,17 @@ vis.binds.hqwidgets = {
 
             var text = '<table class="hq-blind vis-hq-no-space" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"><tr>';
             if (data.descriptionLeft && data.descriptionLeft != " ") {
-                if (data.infoLeftPaddingLeft  === undefined || data.infoLeftPaddingLeft  === null) data.infoLeftPaddingLeft = '15px';
+                console.log("222 we have descriptionleft:  " + data.descriptionLeft);
+                if (data.infoLeftPaddingLeft === undefined || data.infoLeftPaddingLeft === null) data.infoLeftPaddingLeft = '15px';
                 if (data.infoLeftPaddingRight === undefined || data.infoLeftPaddingRight === null) data.infoLeftPaddingRight = '50px';
-                if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/))  data.infoLeftPaddingLeft  = data.infoLeftPaddingLeft  + 'px';
+                if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/)) data.infoLeftPaddingLeft = data.infoLeftPaddingLeft + 'px';
                 if (!data.infoLeftPaddingRight.match(/px$|rem$|em$/)) data.infoLeftPaddingRight = data.infoLeftPaddingRight + 'px';
 
                 text += '<div class="vis-hq-leftinfo" style="padding-left: ' + data.infoLeftPaddingLeft + '; padding-right: ' + data.infoLeftPaddingRight + '; font-size: ' + (data.infoLeftFontSize || 12) + 'px' + (data.infoColor ? ';color: ' + data.infoColor : '') + (data.infoBackground ? ';background: ' + data.infoBackground : '') + '"><span class="vis-hq-leftinfo-text">' +
                     (data.descriptionLeft || '').replace(/\s/g, '&nbsp;').replace(/\\n/g, '<br>') + '</span></div>\n';
+            }
+            else {
+                console.log("222 we dont have descriptionleft");
             }
             if (data.show_value) {
                 if (data.infoRightPaddingLeft  === undefined || data.infoRightPaddingLeft  === null) data.infoRightPaddingLeft = '15px';
@@ -2188,7 +2196,7 @@ vis.binds.hqwidgets = {
                         img = data.IconNameOpened;
                         $div.find('.vis-hq-icon').html('<img class="vis-hq-icon-img" style="height: ' + height + 'px; width: auto;" src="' + img + '"/>')
 
-                        console.log("door.changestate: " + data.IconNameOpened);
+                        console.log("opened door.changestate: " + img);
 
                     } else if (data.noAnimate || isFirst) {
                         $div.find('.vis-hq-door-sheet').css({width: '80%'});
@@ -2208,7 +2216,7 @@ vis.binds.hqwidgets = {
                         img = data.IconNameClosed;
                         $div.find('.vis-hq-icon').html('<img class="vis-hq-icon-img" style="height: ' + height + 'px; width: auto;" src="' + img + '"/>')
 
-                        console.log("door.changestate: " + data.IconNameClosed);
+                        console.log("closed door.changestate: " + img);
 
                     } else if (data.noAnimate || isFirst) {
                         $div.find('.vis-hq-door-sheet').css({width: '100%'});
@@ -2222,21 +2230,31 @@ vis.binds.hqwidgets = {
                 }
             }
         },
+
+        
         draw: function ($div) {
             var data = $div.data('data');
             if (!data) return;
+
+            var value = data.value;
+
+            console.log("333 value is:  " + value);
 
             // place left-info, right-info, caption and image
             if (!$div.find('.vis-hq-main').length) {
                 var text = '';
                 if (data.descriptionLeft && data.descriptionLeft != " ") {
-                    if (data.infoLeftPaddingLeft  === undefined || data.infoLeftPaddingLeft  === null) data.infoLeftPaddingLeft = '15px';
+                    console.log("333 we have descriptionleft:  " + data.descriptionLeft);
+                    if (data.infoLeftPaddingLeft === undefined || data.infoLeftPaddingLeft === null) data.infoLeftPaddingLeft = '15px';
                     if (data.infoLeftPaddingRight === undefined || data.infoLeftPaddingRight === null) data.infoLeftPaddingRight = '50px';
-                    if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/))  data.infoLeftPaddingLeft  = data.infoLeftPaddingLeft  + 'px';
+                    if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/)) data.infoLeftPaddingLeft = data.infoLeftPaddingLeft + 'px';
                     if (!data.infoLeftPaddingRight.match(/px$|rem$|em$/)) data.infoLeftPaddingRight = data.infoLeftPaddingRight + 'px';
 
                     text += '<div class="vis-hq-leftinfo" style="padding-left: ' + data.infoLeftPaddingLeft + '; padding-right: ' + data.infoLeftPaddingRight + '; font-size: ' + (data.infoLeftFontSize || 12) + 'px' + (data.infoColor ? ';color: ' + data.infoColor : '') + (data.infoBackground ? ';background: ' + data.infoBackground : '') + '"><span class="vis-hq-leftinfo-text">' +
                         (data.descriptionLeft || '').replace(/\s/g, '&nbsp;').replace(/\\n/g, '<br>') + '</span></div>\n';
+                }
+                else {
+                    console.log("333 we dont have descriptionleft");
                 }
                 if (data.infoRight || data.wType === 'number' || data.hoursLastAction) {
                     if (data.infoRightPaddingLeft  === undefined || data.infoRightPaddingLeft  === null) data.infoRightPaddingLeft = '15px';
