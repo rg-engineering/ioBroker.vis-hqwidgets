@@ -1235,7 +1235,7 @@ vis.binds.hqwidgets = {
             if (!$div.find('.vis-hq-main').length) {
                 var text = '';
                 if (data.descriptionLeft && data.descriptionLeft != " ") {
-                    console.log("111 we have descriptionleft:  " + data.descriptionLeft);
+                    //console.log("111 we have descriptionleft:  " + data.descriptionLeft);
                     if (data.infoLeftPaddingLeft === undefined || data.infoLeftPaddingLeft === null) data.infoLeftPaddingLeft = '15px';
                     if (data.infoLeftPaddingRight === undefined || data.infoLeftPaddingRight === null) data.infoLeftPaddingRight = '50px';
                     if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/)) data.infoLeftPaddingLeft = data.infoLeftPaddingLeft + 'px';
@@ -1245,7 +1245,7 @@ vis.binds.hqwidgets = {
                         (data.descriptionLeft || '').replace(/\s/g, '&nbsp;').replace(/\\n/g, '<br>') + '</span></div>\n';
                 }
                 else {
-                    console.log("111 we dont have descriptionleft");
+                    //console.log("111 we dont have descriptionleft");
                 }
                 if (data.infoRight || data.wType === 'number' || data.hoursLastAction) {
                     if (data.infoRightPaddingLeft  === undefined || data.infoRightPaddingLeft  === null) data.infoRightPaddingLeft = 0;
@@ -1945,7 +1945,7 @@ vis.binds.hqwidgets = {
 
             var text = '<table class="hq-blind vis-hq-no-space" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"><tr>';
             if (data.descriptionLeft && data.descriptionLeft != " ") {
-                console.log("222 we have descriptionleft:  " + data.descriptionLeft);
+                //console.log("222 we have descriptionleft:  " + data.descriptionLeft);
                 if (data.infoLeftPaddingLeft === undefined || data.infoLeftPaddingLeft === null) data.infoLeftPaddingLeft = '15px';
                 if (data.infoLeftPaddingRight === undefined || data.infoLeftPaddingRight === null) data.infoLeftPaddingRight = '50px';
                 if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/)) data.infoLeftPaddingLeft = data.infoLeftPaddingLeft + 'px';
@@ -1955,7 +1955,7 @@ vis.binds.hqwidgets = {
                     (data.descriptionLeft || '').replace(/\s/g, '&nbsp;').replace(/\\n/g, '<br>') + '</span></div>\n';
             }
             else {
-                console.log("222 we dont have descriptionleft");
+                //console.log("222 we dont have descriptionleft");
             }
             if (data.show_value) {
                 if (data.infoRightPaddingLeft  === undefined || data.infoRightPaddingLeft  === null) data.infoRightPaddingLeft = '15px';
