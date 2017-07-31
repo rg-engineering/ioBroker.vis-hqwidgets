@@ -2195,7 +2195,7 @@ vis.binds.hqwidgets = {
                             var img = null;
                             img = data.IconNameOpened;
                             $div.find('.vis-hq-icon').html('<img class="vis-hq-icon-img" style="height: ' + height + 'px; width: auto;" src="' + img + '"/>')
-                            console.log("opened door.changestate: " + img);
+                            console.log("opened door.changestate: " + img + " w" + width + " h" + height);
                         }
                         else {
                             console.error("IconNameOpened not set ");
@@ -2209,7 +2209,7 @@ vis.binds.hqwidgets = {
                             var img = null;
                             img = data.IconNameClosed;
                             $div.find('.vis-hq-icon').html('<img class="vis-hq-icon-img" style="height: ' + height + 'px; width: auto;" src="' + img + '"/>')
-                            console.log("closed door.changestate: " + img);
+                            console.log("closed door.changestate: " + img + " w" + width + " h" + height);
                         }
                         else {
                             console.error("IconNameClosed not set ");
@@ -2249,13 +2249,13 @@ vis.binds.hqwidgets = {
 
             var value = data.value;
 
-            console.log("333 value is:  " + value);
+            //console.log("333 value is:  " + value);
 
             // place left-info, right-info, caption and image
             if (!$div.find('.vis-hq-main').length) {
                 var text = '';
                 if (data.descriptionLeft && data.descriptionLeft != " ") {
-                    console.log("333 we have descriptionleft:  " + data.descriptionLeft);
+                    //console.log("333 we have descriptionleft:  " + data.descriptionLeft);
                     if (data.infoLeftPaddingLeft === undefined || data.infoLeftPaddingLeft === null) data.infoLeftPaddingLeft = '15px';
                     if (data.infoLeftPaddingRight === undefined || data.infoLeftPaddingRight === null) data.infoLeftPaddingRight = '50px';
                     if (!data.infoLeftPaddingLeft.match(/px$|rem$|em$/)) data.infoLeftPaddingLeft = data.infoLeftPaddingLeft + 'px';
@@ -2265,7 +2265,7 @@ vis.binds.hqwidgets = {
                         (data.descriptionLeft || '').replace(/\s/g, '&nbsp;').replace(/\\n/g, '<br>') + '</span></div>\n';
                 }
                 else {
-                    console.log("333 we dont have descriptionleft");
+                    //console.log("333 we dont have descriptionleft");
                 }
                 if (data.infoRight || data.wType === 'number' || data.hoursLastAction) {
                     if (data.infoRightPaddingLeft  === undefined || data.infoRightPaddingLeft  === null) data.infoRightPaddingLeft = '15px';
@@ -2284,11 +2284,11 @@ vis.binds.hqwidgets = {
                 }
 
                 if (data.IconNameClosed || data.IconNameOpened) {
-                    text += '<table class="vis-hq-main" style="z-index: 1; position: absolute; top: 0; right: 0;">' +
+                    text += '<table class="vis-hq-main vis-hq-no-space" style="z-index: 1; position: absolute; top: 0; right: 0;">' +
                         '<tr class="vis-hq-no-space">' +
-                        '<td>1</td>' +
+                        '<td class="vis-hq-no-space vis-hq-door-empty-right"></td>' +
                         '<td><div class="vis-hq-icon" style="text-align: center;"></div></td>' +
-                        '<td>3</td>' +
+                        '<td class="vis-hq-no-space vis-hq-door-empty-left"></td>' +
                         '</tr></table>\n';
                 }
                 else {
