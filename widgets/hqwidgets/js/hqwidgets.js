@@ -2185,47 +2185,58 @@ vis.binds.hqwidgets = {
             if (!notUpdateDoor) {
 
                 //wenn Icon, dann Icon anzeigen; sonst wie bisher..
-                    
-                if (value) {
-                    if (data.IconNameOpened) {
+                if (data.IconNameOpened || data.IconNameClosed) {
+                    if (value) {
+                        if (data.IconNameOpened) {
 
-                        //to do xxx
-                        var width = $div.width();
-                        var height = $div.height();
-                        var img = null;
-                        img = data.IconNameOpened;
-                        $div.find('.vis-hq-icon').html('<img class="vis-hq-icon-img" style="height: ' + height + 'px; width: auto;" src="' + img + '"/>')
-
-                        console.log("opened door.changestate: " + img);
-
-                    } else if (data.noAnimate || isFirst) {
-                        $div.find('.vis-hq-door-sheet').css({width: '80%'});
-                        $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).css({width: '20%'});
-                        $div.find('.vis-hq-door-handle').css({left: (data.door_type !== 'right') ? '60%': '30%'});
-                    } else {
-                        $div.find('.vis-hq-door-sheet').animate({width: '80%'}, 500);
-                        $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).animate({width: '20%'}, 500);
-                        $div.find('.vis-hq-door-handle').animate({left: (data.door_type !== 'right') ? '60%': '30%'}, 500);
+                            //to do xxx
+                            var width = $div.width();
+                            var height = $div.height();
+                            var img = null;
+                            img = data.IconNameOpened;
+                            $div.find('.vis-hq-icon').html('<img class="vis-hq-icon-img" style="height: ' + height + 'px; width: auto;" src="' + img + '"/>')
+                            console.log("opened door.changestate: " + img);
+                        }
+                        else {
+                            console.error("IconNameOpened not set ");
+                        }
                     }
-                } else {
-                    if(data.IconNameClosed) {
-                        //to do xxx
-                        var width = $div.width();
-                        var height = $div.height();
-                        var img = null;
-                        img = data.IconNameClosed;
-                        $div.find('.vis-hq-icon').html('<img class="vis-hq-icon-img" style="height: ' + height + 'px; width: auto;" src="' + img + '"/>')
-
-                        console.log("closed door.changestate: " + img);
-
-                    } else if (data.noAnimate || isFirst) {
-                        $div.find('.vis-hq-door-sheet').css({width: '100%'});
-                        $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).css({width: 0});
-                        $div.find('.vis-hq-door-handle').css({left: (data.door_type !== 'right') ? '85%': '15%'});
+                    else {
+                        if (data.IconNameClosed) {
+                            //to do xxx
+                            var width = $div.width();
+                            var height = $div.height();
+                            var img = null;
+                            img = data.IconNameClosed;
+                            $div.find('.vis-hq-icon').html('<img class="vis-hq-icon-img" style="height: ' + height + 'px; width: auto;" src="' + img + '"/>')
+                            console.log("closed door.changestate: " + img);
+                        }
+                        else {
+                            console.error("IconNameClosed not set ");
+                        }
+                    }
+                }
+                else {
+                    if (value) {
+                        if (data.noAnimate || isFirst) {
+                            $div.find('.vis-hq-door-sheet').css({ width: '80%' });
+                            $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).css({ width: '20%' });
+                            $div.find('.vis-hq-door-handle').css({ left: (data.door_type !== 'right') ? '60%' : '30%' });
+                        } else {
+                            $div.find('.vis-hq-door-sheet').animate({ width: '80%' }, 500);
+                            $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).animate({ width: '20%' }, 500);
+                            $div.find('.vis-hq-door-handle').animate({ left: (data.door_type !== 'right') ? '60%' : '30%' }, 500);
+                        }
                     } else {
-                        $div.find('.vis-hq-door-sheet').animate({width: '100%'}, 500);
-                        $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).animate({width: 0});
-                        $div.find('.vis-hq-door-handle').animate({left: (data.door_type !== 'right') ? '85%': '15%'}, 500);
+                        if (data.noAnimate || isFirst) {
+                            $div.find('.vis-hq-door-sheet').css({ width: '100%' });
+                            $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).css({ width: 0 });
+                            $div.find('.vis-hq-door-handle').css({ left: (data.door_type !== 'right') ? '85%' : '15%' });
+                        } else {
+                            $div.find('.vis-hq-door-sheet').animate({ width: '100%' }, 500);
+                            $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).animate({ width: 0 });
+                            $div.find('.vis-hq-door-handle').animate({ left: (data.door_type !== 'right') ? '85%' : '15%' }, 500);
+                        }
                     }
                 }
             }
@@ -2271,21 +2282,37 @@ vis.binds.hqwidgets = {
 
                     text += '</div>\n';
                 }
-                text += '<table class="vis-hq-main vis-hq-door vis-hq-no-space" style="z-index: 1; position: absolute; top: 0; right: 0;">' +
-                    '<tr class="vis-hq-no-space">' +
+
+                if (data.IconNameClosed || data.IconNameOpened) {
+                    text += '<table class="vis-hq-main" style="z-index: 1; position: absolute; top: 0; right: 0;">' +
+                        '<tr class="vis-hq-no-space">' +
+                        '<td>1</td>' +
+                        '<td><div class="vis-hq-icon" style="text-align: center;"></div></td>' +
+                        '<td>3</td>' +
+                        '</tr></table>\n';
+                }
+                else {
+
+                    text += '<table class="vis-hq-main vis-hq-door vis-hq-no-space" style="z-index: 1; position: absolute; top: 0; right: 0;">' +
+                        '<tr class="vis-hq-no-space">' +
                         '<td class="vis-hq-no-space vis-hq-door-empty-right"></td>' +
                         '<td class="vis-hq-no-space vis-hq-door-sheet"><div class="vis-hq-door-handle"></div></td>' +
                         '<td class="vis-hq-no-space vis-hq-door-empty-left"></td>' +
-                    '</tr></table>\n';
+                        '</tr></table>\n';
+                }
                 $div.append(text);
             }
-            $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).css({background: data.emptyColor || '#515151'});
-            if (data.door_type === 'right') {
-                $div.find('.vis-hq-door-handle').css({left: '15%'});
-            } else {
-                $div.find('.vis-hq-door-handle').css({left: '85%'});
-            }
 
+            if (data.IconNameClosed || data.IconNameOpened) {
+            }
+            else {
+                $div.find('.vis-hq-door-empty-' + (data.door_type || 'left')).css({ background: data.emptyColor || '#515151' });
+                if (data.door_type === 'right') {
+                    $div.find('.vis-hq-door-handle').css({ left: '15%' });
+                } else {
+                    $div.find('.vis-hq-door-handle').css({ left: '85%' });
+                }
+            }
             $div.css({
                 'padding-top':     data.border_width,
                 'padding-bottom' : data.border_width - 1,
